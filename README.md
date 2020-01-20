@@ -1,2 +1,2 @@
 # Movement
-A Source Bowl tutorial on vector based movement.
+A Source Bowl tutorial on using trigonometry to move around the screen.
