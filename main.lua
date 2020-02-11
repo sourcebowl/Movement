@@ -10,13 +10,20 @@ function love.load()
 end
 
 function love.update(dt)
-    if love.keyboard.isDown("left") then
-        angle = angle - rotation_speed * dt
-    elseif love.keyboard.isDown("right") then
-        angle = angle + rotation_speed * dt
+    local dx = love.mouse.getX() - love.graphics.getWidth()/2
+
+    if dx == 0 then
+        if love.keyboard.isDown("left") then
+            angle = angle - rotation_speed * dt
+        elseif love.keyboard.isDown("right") then
+            angle = angle + rotation_speed * dt
+        end
+    else
+        angle = angle + dx*4 * dt
+        love.mouse.setPosition(love.graphics.getWidth()/2, love.graphics.getHeight()/2)
     end
 
-    if love.keyboard.isDown("space") then
+    if love.keyboard.isDown("space") or love.mouse.isDown(1) then
         x = x + math.cos(angle) * dt * movement_speed
         y = y + math.sin(angle) * dt * movement_speed
     end
